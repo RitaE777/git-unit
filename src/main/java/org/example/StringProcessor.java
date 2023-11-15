@@ -40,7 +40,9 @@ public class StringProcessor {
             return "Два";
         } else return "Три";
     }
-
+    public  static void testCommit(){
+        System.out.println("test commit");
+    }
     public static StringBuilder deleteEven(StringBuilder line){
         for(int i = 1; i < line.length(); i++){
             line = line.deleteCharAt(i);// считает не с 0 а с 1
