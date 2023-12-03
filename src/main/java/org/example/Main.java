@@ -19,7 +19,7 @@ public class Main {
                     StringProcessor.copy(s1, N);
                     int count = StringProcessor.entryCount(s1, s2);
                     System.out.println("Number of occurrences of the second line in the first " + count);
-                    String line1 = "1";
+                    String line1 = "123";
                     String line2 = "2";
                     String line3 = "3";
                     System.out.println("1 - " + StringProcessor.remove(line1));

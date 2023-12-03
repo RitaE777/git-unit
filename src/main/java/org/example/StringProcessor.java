@@ -1,5 +1,6 @@
 package org.example;
 
+
 public class StringProcessor {
 
     public static String copy(String s, int N) throws Exception {
@@ -22,7 +23,7 @@ public class StringProcessor {
             index = s1.indexOf(s2, index);
             if (index != -1) {
                 count++;
-                index += s2.length();
+                index += 1;
             } else {
                 break;
             }
@@ -30,16 +31,26 @@ public class StringProcessor {
 
         return count;
     }
-
     public static String remove(String line) throws Exception {
-        char result = line.charAt(0);
-        int buf = result - '0';
-        if (buf == 1) {
-            return "Один";
-        } else if (buf == 2) {
-            return "Два";
-        } else return "Три";
+        String newLine = "";
+        for (int i = 0; i < line.length(); i++){
+            char result = line.charAt(i);
+            int buf = result -'0';
+            if (buf == 1) {
+                newLine += "Один";
+
+            } else if (buf == 2) {
+                newLine += "Два";
+
+            } else if (buf == 3) {
+                newLine += "Три";
+            }
+            else newLine += result;
+            }
+        return newLine;
+
     }
+
 
     public static StringBuilder deleteEven(StringBuilder line){
         for(int i = 1; i < line.length(); i++){
