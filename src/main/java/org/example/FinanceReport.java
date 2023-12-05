@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class FinanceReport {
     private Payment[] payments;
     private String name;
@@ -13,21 +16,25 @@ public class FinanceReport {
         this.year = year;
         this.payments = payments;
     }
-    public FinanceReport(FinanceReport financeReport) {
-        this.name = financeReport.name;
-        this.day = financeReport.day;
-        this.month = financeReport.month;
-        this.year = financeReport.year;
-        int thisPaymentLength = financeReport.payments.length;
-        this.payments = new Payment[thisPaymentLength];
-        for (int i = 0; i < financeReport.payments.length; i++) {
-            this.payments[i] = financeReport.payments[i];
-        }
-    }
 
+
+    public FinanceReport(FinanceReport financeReport) {
+        name = financeReport.getName();
+        day = financeReport.getDay();
+        month = financeReport.getMonth();
+        year = financeReport.getYear();
+        int size = financeReport.getPaymentCount();
+        payments = new Payment[size];
+        //почему достаточно вызвать метод financeReport.getPaymentByIndex(i) а не вручную создавать палтежи через new Payment
+        for(int i = 0; i < size; i++){
+            payments[i] = financeReport.getPaymentByIndex(i);
+        }
+
+    }
     public void setPayments(Payment[] payments) {
         this.payments = payments;
     }
+
     public Payment[] getPayments() {
         return payments;
     }
@@ -62,12 +69,11 @@ public class FinanceReport {
     public int getPaymentCount(){
         return payments.length;
     }
-
-    public Payment getPayment(int index){
+    public Payment getPaymentByIndex(int index){
         return payments[index];
     }
-    public void setPayment(int i, Payment payment) {
-        payments[i] = payment;
+    public void setPayment(Payment payment, int number){
+        payments[number] = payment;
     }
 
     @Override
@@ -80,5 +86,18 @@ public class FinanceReport {
         return string.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FinanceReport that = (FinanceReport) o;
+        return day == that.day && month == that.month && year == that.year && Arrays.equals(payments, that.payments) && Objects.equals(name, that.name);
+    }
 
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, day, month, year);
+        result = 31 * result + Arrays.hashCode(payments);
+        return result;
+    }
 }

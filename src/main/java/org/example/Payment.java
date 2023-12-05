@@ -2,7 +2,11 @@ package org.example;
 
 import java.util.Objects;
 
-/* какие конструкторы */
+/* какие конструкторы
+        for (int i = 0; i < financeReport.payments.length; i++) {
+            this.payments[i] = financeReport.payments[i];
+        }
+         */
 public class Payment {
 
     private String fullName;
@@ -81,7 +85,6 @@ public class Payment {
         this.year = year;
         this.sumPayment = sumPayment;
     }
-    public Payment(){
-    }
+
 
 }

@@ -32,22 +32,22 @@ public class StringProcessor {
         return count;
     }
     public static String remove(String line) throws Exception {
-        String newLine = "";
+        StringBuilder newLine = new StringBuilder();
         for (int i = 0; i < line.length(); i++){
             char result = line.charAt(i);
-            int buf = result -'0';
+            int buf = result - '0';
             if (buf == 1) {
-                newLine += "Один";
+                newLine.append("Один");
 
             } else if (buf == 2) {
-                newLine += "Два";
+                newLine.append("Два");
 
             } else if (buf == 3) {
-                newLine += "Три";
+                newLine.append("Три");
             }
-            else newLine += result;
+            else newLine.append(result);
             }
-        return newLine;
+        return newLine.toString();
 
     }
 
